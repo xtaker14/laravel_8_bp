@@ -25,20 +25,9 @@ class ComposerServiceProvider extends ServiceProvider
 
         View::composer(['frontend.index', 'frontend.layouts.app'], function ($view) use ($announcementService) {
             $view->with('announcements', $announcementService->getForFrontend());
-        });
+        }); 
 
-        $categories = new Categories();
-        $all_menus = $categories->where([
-                'is_editable' => 'yes',
-                'is_menu' => 'yes',
-                // 'parent_id' => null,
-            ])
-            ->orderBy('parent_id', 'ASC')
-            ->orderBy('sort', 'ASC')
-            ->get();
-
-        $all_menus = $categories->getUnlimitedChildren($all_menus);
-
+        $all_menus = $this->allMenus();
         // dump($all_menus);
         // exit;
 
@@ -51,19 +40,39 @@ class ComposerServiceProvider extends ServiceProvider
         });
     }
 
-    private function buildTree(object $elements, $parent_id = 0) {
-        $branch = array();
-        foreach ($elements as $idx => $val) {
-            $element = $val->getAttributes();
-            if ($element['parent_id'] == $parent_id) {
-                $children = $this->buildTree($elements, $element['id']);
-                $isArray = filter_var($element['isArray'], FILTER_VALIDATE_BOOLEAN);
-                if ($isArray) {
-                    $element['isArray'] = $children;
-                }
-                $branch[] = $element;
-            }
+    private function allMenus(){
+        $categories = new Categories();
+        if(!\Illuminate\Support\Facades\Schema::hasTable($categories->getTable())){
+            return [];
         }
-        return $branch;
+
+        $all_menus = $categories->where([
+                'is_editable' => 'yes',
+                'is_menu' => 'yes',
+                // 'parent_id' => null,
+            ])
+            ->orderBy('parent_id', 'ASC')
+            ->orderBy('sort', 'ASC')
+            ->get();
+
+        $all_menus = $categories->getUnlimitedChildren($all_menus);
+
+        return $all_menus;
     }
+
+    // private function buildTree(object $elements, $parent_id = 0) {
+    //     $branch = array();
+    //     foreach ($elements as $idx => $val) {
+    //         $element = $val->getAttributes();
+    //         if ($element['parent_id'] == $parent_id) {
+    //             $children = $this->buildTree($elements, $element['id']);
+    //             $isArray = filter_var($element['isArray'], FILTER_VALIDATE_BOOLEAN);
+    //             if ($isArray) {
+    //                 $element['isArray'] = $children;
+    //             }
+    //             $branch[] = $element;
+    //         }
+    //     }
+    //     return $branch;
+    // }
 }

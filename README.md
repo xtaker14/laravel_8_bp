@@ -53,10 +53,10 @@ MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
    - DB_CONNECTION=mysql <br/>
    - DB_HOST=127.0.0.1 <br/>
    - DB_PORT=3306 <br/>
-   - DB_DATABASE=homestead <br/>
-   - DB_USERNAME=homestead <br/>
-   - DB_PASSWORD=secret <br/>
-4. delete file composer.lock and package-lock.json <br/>
+   - DB_DATABASE={your_dbname} <br/>
+   - DB_USERNAME={your_username} <br/>
+   - DB_PASSWORD={your_password} <br/>
+4. delete file package-lock.json <br/>
 5. "COMPOSER_MEMORY_LIMIT=-1 composer install" from the root of the project <br/>
 6. "npm install" from the root of the project <br/>
 7. "yarn" from the root of the project (If you have Yarn installed)<br/>
@@ -66,10 +66,9 @@ MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
 11. "php artisan module:seed Pegawai --class=PegawaiSeederTableSeeder" from the root of the project (optional, test module Pegawai)<br/>
 12. "php artisan storage:link" from the root of the project <br/>
 13. "php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"" from the root of the project (Optionally, publish the package's configuration file)<br/>
-14. "COMPOSER_MEMORY_LIMIT=-1 composer require psr/simple-cache:^2.0 maatwebsite/excel" from the root of the project <br/>
-15. "php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config" from the root of the project (Optionally, publish the package's configuration file) <br/>
-16. "npm run dev" from the root of the project <br/>
-17. "phpunit" from the root of the project <br/>
+14. "php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config" from the root of the project (Optionally, publish the package's configuration file) <br/>
+15. "npm run dev" from the root of the project <br/>
+16. "phpunit" from the root of the project <br/>
 
 ### SOURCE
 
