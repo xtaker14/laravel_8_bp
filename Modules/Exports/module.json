@@ -1,0 +1,13 @@
+{
+    "name": "Exports",
+    "alias": "exports",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Exports\\Providers\\ExportsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
