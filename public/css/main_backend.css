@@ -1,0 +1,13 @@
+/* div.c-sidebar ul.c-sidebar-nav-dropdown-items > li.c-sidebar-nav-dropdown > a.c-sidebar-nav-dropdown-toggle, 
+div.c-sidebar ul.c-sidebar-nav-dropdown-items > li.c-sidebar-nav-item > a.c-sidebar-nav-link {
+    padding-left: 56px;
+}
+
+div.c-sidebar ul.c-sidebar-nav-dropdown-items > li.c-sidebar-nav-dropdown > ul.c-sidebar-nav-dropdown-items > li.c-sidebar-nav-item > a.c-sidebar-nav-link {
+    padding-left: 76px;
+} */
+
+.c-sidebar .c-sidebar-nav-link.c-active,
+.c-sidebar .c-active.c-sidebar-nav-dropdown-toggle{
+    background: #321fdb;
+}

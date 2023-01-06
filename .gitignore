@@ -1,8 +1,12 @@
 /coverage
 /node_modules
-/public/css
-/public/js
-/public/fonts
+/public/css/backend.css
+/public/css/frontend.css
+/public/js/backend.js
+/public/js/frontend.js
+/public/js/manifest.js
+/public/js/vendor.js
+/public/fonts/vendor
 /public/hot
 /public/storage
 /public/mix-manifest.json
