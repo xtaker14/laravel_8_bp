@@ -10,10 +10,11 @@
     @yield('meta')
 
     @stack('before-styles')
-        <link href="{{ mix('css/backend.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/main_backend.css') }}" rel="stylesheet">
-        <livewire:styles />
+    <link href="{{ mix('css/backend.css') }}" rel="stylesheet"> 
+    
     @stack('after-styles')
+    <link href="{{ asset('css/main_backend.css') }}" rel="stylesheet">
+    <livewire:styles />
 </head>
 <body class="c-app">
     @include('backend.includes.sidebar')
@@ -39,12 +40,13 @@
     </div><!--c-wrapper-->
 
     @stack('before-scripts')
-        <script src="{{ mix('js/manifest.js') }}"></script>
-        <script src="{{ mix('js/vendor.js') }}"></script>
-        <script src="{{ mix('js/backend.js') }}"></script>
-        <script src="{{ asset('js/main_backend.js') }}"></script>
-        <livewire:scripts />
+    <script src="{{ mix('js/manifest.js') }}"></script>
+    <script src="{{ mix('js/vendor.js') }}"></script>
+    <script src="{{ mix('js/backend.js') }}"></script>
+
     @stack('after-scripts')
+    <script src="{{ asset('js/main_backend.js') }}"></script>
+    <livewire:scripts />
 
     @stack('additional-scripts')
 </body>

@@ -40,6 +40,11 @@ class Permission extends SpatiePermission
         "menu_route",  
         "updated_at",
     ];
+    
+    public function __construct(array $attributes = array())
+    {
+        parent::__construct($attributes);
+    }
 
     // protected static function newFactory()
     // {

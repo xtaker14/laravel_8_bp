@@ -6,6 +6,8 @@ use App\Domains\Announcement\Services\AnnouncementService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Domains\Auth\Models\Permission as Categories; 
+use App\Domains\Auth\Models\PersonalAccessToken; 
+use Laravel\Sanctum\Sanctum;
 
 /**
  * Class ComposerServiceProvider.
@@ -20,6 +22,10 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot(AnnouncementService $announcementService)
     {
         View::composer('*', function ($view) {
+            $personal_access_tokens = new PersonalAccessToken();
+            if(\Illuminate\Support\Facades\Schema::hasTable($personal_access_tokens->getTable())){
+                Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+            }
             $view->with('logged_in_user', auth()->user());
         });
 

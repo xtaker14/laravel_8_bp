@@ -7,9 +7,11 @@ use App\Domains\Auth\Http\Controllers\Backend\User\UserController;
 use App\Domains\Auth\Http\Controllers\Backend\User\UserPasswordController;
 use App\Domains\Auth\Http\Controllers\Backend\User\UserSessionController;
 use App\Domains\Auth\Http\Controllers\Backend\Categories\CategoriesController;
+use App\Domains\Auth\Http\Controllers\AuthApiController;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Models\Permission as Categories;
+use App\Domains\Auth\Models\PersonalAccessToken as PAToken; 
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.auth'.
@@ -176,6 +178,40 @@ Route::group([
 
             Route::patch('/', [CategoriesController::class, 'update'])->name('update');
             Route::delete('/', [CategoriesController::class, 'destroy'])->name('destroy');
+        });
+    });
+
+    Route::group([
+        'prefix' => 'api',
+        'as' => 'api.',
+        'middleware' => 'role:'.config('boilerplate.access.role.admin'),
+    ], function () {
+        Route::get('/', [AuthApiController::class, 'index'])
+            ->name('index')
+            ->breadcrumbs(function (Trail $trail) {
+                $trail->parent('admin.dashboard')
+                    ->push(__('Auth API Management'), route('admin.auth.api.index'));
+            });
+
+        Route::get('create', [AuthApiController::class, 'create'])
+            ->name('create')
+            ->breadcrumbs(function (Trail $trail) {
+                $trail->parent('admin.auth.api.index')
+                    ->push(__('Create Auth API'), route('admin.auth.api.create'));
+            });
+
+        Route::post('/', [AuthApiController::class, 'store'])->name('store');
+
+        Route::group(['prefix' => '{api}'], function () {
+            Route::get('edit', [AuthApiController::class, 'edit'])
+                ->name('edit')
+                ->breadcrumbs(function (Trail $trail, PAToken $api) {
+                    $trail->parent('admin.auth.api.index')
+                        ->push(__('Editing :api', ['api' => $api->name]), route('admin.auth.api.edit', $api));
+                });
+
+            Route::patch('/', [AuthApiController::class, 'update'])->name('update');
+            Route::delete('/', [AuthApiController::class, 'destroy'])->name('destroy');
         });
     });
 });

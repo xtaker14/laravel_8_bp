@@ -21,11 +21,14 @@ class CategoriesTable extends DataTableComponent
     {
         return Categories::when(
                 $this->getFilter('search'), fn ($query, $term) => $query->search($term)
-            )->when(
+            )
+            ->when(
                 $this->getFilter('type'), fn ($query, $term) => $query->where('type', $term)
-            )->when(
+            )
+            ->when(
                 $this->getFilter('is_menu'), fn ($query, $term) => $query->where('is_menu', $term)
-            )->when(
+            )
+            ->when(
                 $this->getFilter('is_module'), fn ($query, $term) => $query->where('is_module', $term)
             );
     }

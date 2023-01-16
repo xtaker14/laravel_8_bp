@@ -16,7 +16,7 @@
     }
 @endphp
 
-@push('additional-scripts')
+@push('after-scripts')
     <script>
         var v_modules = <?= json_encode($modules); ?>;
     </script>

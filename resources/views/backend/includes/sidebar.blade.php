@@ -245,6 +245,14 @@
                                 :text="__('Categories Management')"
                                 :active="activeClass(Route::is('admin.auth.categories.*'), 'c-active')" />
                         </li>
+                        
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.auth.api.index')"
+                                class="c-sidebar-nav-link"
+                                :text="__('Auth API Management')"
+                                :active="activeClass(Route::is('admin.auth.api.*'), 'c-active')" />
+                        </li>
                     @endif
                 </ul>
             </li>

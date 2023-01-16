@@ -67,8 +67,9 @@ MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
 12. "php artisan storage:link" from the root of the project <br/>
 13. "php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"" from the root of the project (Optionally, publish the package's configuration file)<br/>
 14. "php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config" from the root of the project (Optionally, publish the package's configuration file) <br/>
-15. "npm run dev" from the root of the project <br/>
-16. "phpunit" from the root of the project <br/>
+15. "php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"" from the root of the project (Optionally, publish the package's (API) configuration file) <br/>
+16. "npm run dev" from the root of the project <br/>
+17. "phpunit" from the root of the project <br/>
 
 ### SOURCE
 
