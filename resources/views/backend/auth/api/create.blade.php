@@ -5,7 +5,7 @@
 @section('title', __('Create Auth API'))
 
 @push('after-scripts') 
-    {{-- <script src="{{ asset('js/categories/create.js')}}"></script> --}}
+    {{-- <script src="{{ asset('js/backend/api/create.js')}}"></script> --}}
 @endpush
 
 @section('content')
@@ -26,7 +26,7 @@
 
                         <div class="col-md-4">
                             {{-- <livewire:components.backend.select2-user /> --}}
-                            @livewire('components.backend.select2-user', ['is_required' => 'yes'])
+                            @livewire('components.backend.select2-user', ['is_required' => 'yes', 'current_value' => old('user')])
                         </div> 
                     </div>
 
@@ -41,19 +41,19 @@
 
                         <div class="col-md-4">
                             <select name="abilities" class="form-control" required>
-                                <option value="*">
+                                <option value="*" {{ old('abilities') == '*' ? 'selected' : '' }}>
                                     ALL
                                 </option>
-                                <option value="read">
+                                <option value="read" {{ old('abilities') == 'read' ? 'selected' : '' }}>
                                     Read
                                 </option>
-                                <option value="create">
+                                <option value="create" {{ old('abilities') == 'create' ? 'selected' : '' }}>
                                     Create
                                 </option>
-                                <option value="update">
+                                <option value="update" {{ old('abilities') == 'update' ? 'selected' : '' }}>
                                     Update
                                 </option>
-                                <option value="delete">
+                                <option value="delete" {{ old('abilities') == 'delete' ? 'selected' : '' }}>
                                     Delete
                                 </option>
                             </select>

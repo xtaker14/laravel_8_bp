@@ -20,7 +20,7 @@
     <script>
         var v_modules = <?= json_encode($modules); ?>;
     </script>
-    <script src="{{ asset('js/categories/create.js')}}"></script>
+    <script src="{{ asset('js/backend/categories/create.js')}}"></script>
 @endpush
 
 @section('content')

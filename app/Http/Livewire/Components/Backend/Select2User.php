@@ -13,6 +13,8 @@ class Select2User extends Component
     public $user_list = [];
     public $selectedUser;
     public $is_required;
+    public $is_readonly;
+    public $current_value;
     // public $user_val;
 
     public function usersSelect($data)

@@ -203,12 +203,19 @@ Route::group([
         Route::post('/', [AuthApiController::class, 'store'])->name('store');
 
         Route::group(['prefix' => '{api}'], function () {
-            Route::get('edit', [AuthApiController::class, 'edit'])
-                ->name('edit')
-                ->breadcrumbs(function (Trail $trail, PAToken $api) {
-                    $trail->parent('admin.auth.api.index')
-                        ->push(__('Editing :api', ['api' => $api->name]), route('admin.auth.api.edit', $api));
-                });
+            // Route::controller(AuthApiController::class)->group(function () { 
+            // }); 
+            Route::get('edit', function (\App\Domains\Auth\Http\Requests\Backend\AuthApi\EditRequest $request) {
+                $id_api = $request->route()->parameter('api');
+                $get_api = PAToken::findOrFail($id_api);
+                
+                $get_controller = app()->make(AuthApiController::class);
+                return $get_controller->edit($request, $get_api);
+            })->name('edit')->breadcrumbs(function (Trail $trail, $id_api) {
+                $get_api = PAToken::findOrFail($id_api);
+                $trail->parent('admin.auth.api.index')
+                    ->push(__('Editing :get_api', ['get_api' => $get_api->name]), route('admin.auth.api.edit', $get_api));
+            });
 
             Route::patch('/', [AuthApiController::class, 'update'])->name('update');
             Route::delete('/', [AuthApiController::class, 'destroy'])->name('destroy');

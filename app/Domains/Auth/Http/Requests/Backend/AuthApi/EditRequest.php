@@ -17,7 +17,7 @@ class EditRequest extends FormRequest
      */
     public function authorize()
     {
-        return ($this->user()->hasAllAccess() && $this->categories->is_editable === 'yes');
+        return $this->user()->hasAllAccess();
     }
 
     /**

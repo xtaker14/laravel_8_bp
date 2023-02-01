@@ -62,7 +62,9 @@ class AuthApiController
      */
     public function edit(EditRequest $request, PAToken $authapi)
     {
-        return view('backend.auth.api.edit', [])->withAuthApi($authapi);
+        $id_api = $request->route()->parameter('api');
+        $get_authapi = $authapi->findOrFail($id_api);
+        return view('backend.auth.api.edit', [])->withAuthApi($get_authapi);
     }
 
     /**
@@ -75,7 +77,9 @@ class AuthApiController
      */
     public function update(UpdateRequest $request, PAToken $authapi)
     {
-        $this->authApiService->update($authapi, $request->validated());
+        $id_api = $request->route()->parameter('api');
+        $get_authapi = $authapi->findOrFail($id_api);
+        $this->authApiService->update($get_authapi, $request->validated());
 
         return redirect()->route('admin.auth.api.index')->withFlashSuccess(__('The auth api was successfully updated.'));
     }
@@ -89,7 +93,8 @@ class AuthApiController
      */
     public function destroy(DeleteRequest $request, PAToken $authapi)
     {
-        $get_authapi = $authapi->findOrFail($request->route()->parameter('api'));
+        $id_api = $request->route()->parameter('api');
+        $get_authapi = $authapi->findOrFail($id_api);
         $this->authApiService->destroy($get_authapi);
 
         return redirect()->route('admin.auth.api.index')->withFlashSuccess(__('The auth api was successfully deleted.'));
@@ -149,12 +154,4 @@ class AuthApiController
 
         return response($response, 201);
     }
-
-    // public function destory(Request $request) {
-    //     auth()->user()->tokens()->delete();
-
-    //     return [
-    //         'message' => 'The token has been successfully destroyed'
-    //     ];
-    // }
 }
