@@ -2,7 +2,7 @@
 
 namespace App\Domains\Auth\Events\Categories;
 
-use App\Domains\Auth\Models\Permission as Categories;
+use App\Domains\Auth\Models\Permission as AdmCategories;
 use Illuminate\Queue\SerializesModels;
 
 /**
@@ -20,7 +20,7 @@ class CategoriesCreated
     /**
      * @param $categories
      */
-    public function __construct(Categories $categories)
+    public function __construct(AdmCategories $categories)
     {
         $this->categories = $categories;
     }

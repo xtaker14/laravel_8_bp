@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Backend;
 
-use App\Domains\Auth\Models\Permission as Categories;
+use App\Domains\Auth\Models\Permission as AdmCategories;
 use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
@@ -19,7 +19,7 @@ class CategoriesTable extends DataTableComponent
      */
     public function query(): Builder
     {
-        return Categories::when(
+        return AdmCategories::when(
                 $this->getFilter('search'), fn ($query, $term) => $query->search($term)
             )
             ->when(

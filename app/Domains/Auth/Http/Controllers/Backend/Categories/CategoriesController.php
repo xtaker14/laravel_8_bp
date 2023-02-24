@@ -6,7 +6,7 @@ use App\Domains\Auth\Http\Requests\Backend\Categories\StoreCategoriesRequest;
 use App\Domains\Auth\Http\Requests\Backend\Categories\DeleteCategoriesRequest;
 use App\Domains\Auth\Http\Requests\Backend\Categories\EditCategoriesRequest;
 use App\Domains\Auth\Http\Requests\Backend\Categories\UpdateCategoriesRequest;
-use App\Domains\Auth\Models\Permission as Categories; 
+use App\Domains\Auth\Models\Permission as AdmCategories; 
 use App\Domains\Auth\Services\PermissionService;
 use Illuminate\Support\Facades\Route;
 
@@ -43,7 +43,7 @@ class CategoriesController
      */
     public function create()
     {
-        $parent_categories = Categories::where('is_editable', 'yes')->get(); 
+        $parent_categories = AdmCategories::where('is_editable', 'yes')->get(); 
         // $modules_statuses = json_decode(file_get_contents(base_path('modules_statuses.json')), true);
 
         $get_attr_module = getAttrNonOrModule();
@@ -74,12 +74,12 @@ class CategoriesController
 
     /**
      * @param  EditCategoriesRequest  $request
-     * @param  Categories  $categories
+     * @param  AdmCategories  $categories
      * @return mixed
      */
-    public function edit(EditCategoriesRequest $request, Categories $categories)
+    public function edit(EditCategoriesRequest $request, AdmCategories $categories)
     {
-        $parent_categories = Categories::where('is_editable', 'yes')->get(); 
+        $parent_categories = AdmCategories::where('is_editable', 'yes')->get(); 
 
         $get_attr_module = getAttrNonOrModule();
         $non_modules = $get_attr_module['non_modules'];
@@ -95,13 +95,13 @@ class CategoriesController
 
     /**
      * @param  UpdateCategoriesRequest  $request
-     * @param  Categories  $categories
+     * @param  AdmCategories  $categories
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException
      * @throws \Throwable
      */
-    public function update(UpdateCategoriesRequest $request, Categories $categories)
+    public function update(UpdateCategoriesRequest $request, AdmCategories $categories)
     {
         $this->permissionService->update($categories, $request->validated());
 
@@ -110,12 +110,12 @@ class CategoriesController
 
     /**
      * @param  DeleteCategoriesRequest  $request
-     * @param  Categories  $categories
+     * @param  AdmCategories  $categories
      * @return mixed
      *
      * @throws \Exception
      */
-    public function destroy(DeleteCategoriesRequest $request, Categories $categories)
+    public function destroy(DeleteCategoriesRequest $request, AdmCategories $categories)
     {
         $this->permissionService->destroy($categories);
 

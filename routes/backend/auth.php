@@ -10,7 +10,7 @@ use App\Domains\Auth\Http\Controllers\Backend\Categories\CategoriesController;
 use App\Domains\Auth\Http\Controllers\AuthApiController;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
-use App\Domains\Auth\Models\Permission as Categories;
+use App\Domains\Auth\Models\Permission as AdmCategories;
 use App\Domains\Auth\Models\PersonalAccessToken as PAToken; 
 use Tabuna\Breadcrumbs\Trail;
 
@@ -171,7 +171,7 @@ Route::group([
         Route::group(['prefix' => '{categories}'], function () {
             Route::get('edit', [CategoriesController::class, 'edit'])
                 ->name('edit')
-                ->breadcrumbs(function (Trail $trail, Categories $categories) {
+                ->breadcrumbs(function (Trail $trail, AdmCategories $categories) {
                     $trail->parent('admin.auth.categories.index')
                         ->push(__('Editing :categories', ['categories' => $categories->name]), route('admin.auth.categories.edit', $categories));
                 });

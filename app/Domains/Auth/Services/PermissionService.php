@@ -5,7 +5,7 @@ namespace App\Domains\Auth\Services;
 use App\Domains\Auth\Events\Categories\CategoriesCreated;
 use App\Domains\Auth\Events\Categories\CategoriesDeleted;
 use App\Domains\Auth\Events\Categories\CategoriesUpdated;
-use App\Domains\Auth\Models\Permission as Categories;
+use App\Domains\Auth\Models\Permission as AdmCategories;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
 use Exception;
@@ -19,21 +19,21 @@ class PermissionService extends BaseService
     /**
      * PermissionService constructor.
      *
-     * @param  Categories  $categories
+     * @param  AdmCategories  $categories
      */
-    public function __construct(Categories $categories)
+    public function __construct(AdmCategories $categories)
     {
         $this->model = $categories;
     }
 
     /**
      * @param  array  $data
-     * @return Categories
+     * @return AdmCategories
      *
      * @throws GeneralException
      * @throws \Throwable
      */
-    public function store(array $data = []): Categories
+    public function store(array $data = []): AdmCategories
     {
         DB::beginTransaction();
 
@@ -93,14 +93,14 @@ class PermissionService extends BaseService
     }
 
     /**
-     * @param  Categories  $categories
+     * @param  AdmCategories  $categories
      * @param  array  $data
-     * @return Categories
+     * @return AdmCategories
      *
      * @throws GeneralException
      * @throws \Throwable
      */
-    public function update(Categories $categories, array $data = []): Categories
+    public function update(AdmCategories $categories, array $data = []): AdmCategories
     {
         DB::beginTransaction();
 
@@ -160,12 +160,12 @@ class PermissionService extends BaseService
     }
 
     /**
-     * @param  Categories  $categories
+     * @param  AdmCategories  $categories
      * @return bool
      *
      * @throws GeneralException
      */
-    public function destroy(Categories $categories): bool
+    public function destroy(AdmCategories $categories): bool
     {
         if ($categories->users()->count()) {
             throw new GeneralException(__('You can not delete a categories with associated users.'));

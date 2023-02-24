@@ -3,7 +3,7 @@
 namespace Tests\Feature\Backend\Role;
 
 use App\Domains\Auth\Events\Role\RoleCreated;
-use App\Domains\Auth\Models\Permission as Categories;
+use App\Domains\Auth\Models\Permission as AdmCategories;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -56,7 +56,7 @@ class CreateRoleTest extends TestCase
             'type' => User::TYPE_ADMIN,
             'name' => 'new role',
             'permissions' => [
-                Categories::whereName('admin.access.user.list')->first()->id,
+                AdmCategories::whereName('admin.access.user.list')->first()->id,
             ],
         ]);
 
@@ -66,7 +66,7 @@ class CreateRoleTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('role_has_permissions', [
-            'permission_id' => Categories::whereName('admin.access.user.list')->first()->id,
+            'permission_id' => AdmCategories::whereName('admin.access.user.list')->first()->id,
             'role_id' => Role::whereName('new role')->first()->id,
         ]);
 

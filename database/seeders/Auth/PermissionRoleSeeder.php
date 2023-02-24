@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Auth;
 
-use App\Domains\Auth\Models\Permission as Categories;
+use App\Domains\Auth\Models\Permission as AdmCategories;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Database\Seeders\Traits\DisableForeignKeys;
@@ -34,43 +34,43 @@ class PermissionRoleSeeder extends Seeder
 
         // Grouped permissions
         // Users category
-        $users = Categories::create([
+        $users = AdmCategories::create([
             'type' => User::TYPE_ADMIN,
             'name' => 'admin.access.user',
             'description' => 'All User Permissions',
         ]);
 
         $users->children()->saveMany([
-            new Categories([
+            new AdmCategories([
                 'type' => User::TYPE_ADMIN,
                 'name' => 'admin.access.user.list',
                 'description' => 'View Users',
             ]),
-            new Categories([
+            new AdmCategories([
                 'type' => User::TYPE_ADMIN,
                 'name' => 'admin.access.user.deactivate',
                 'description' => 'Deactivate Users',
                 'sort' => 2,
             ]),
-            new Categories([
+            new AdmCategories([
                 'type' => User::TYPE_ADMIN,
                 'name' => 'admin.access.user.reactivate',
                 'description' => 'Reactivate Users',
                 'sort' => 3,
             ]),
-            new Categories([
+            new AdmCategories([
                 'type' => User::TYPE_ADMIN,
                 'name' => 'admin.access.user.clear-session',
                 'description' => 'Clear User Sessions',
                 'sort' => 4,
             ]),
-            new Categories([
+            new AdmCategories([
                 'type' => User::TYPE_ADMIN,
                 'name' => 'admin.access.user.impersonate',
                 'description' => 'Impersonate Users',
                 'sort' => 5,
             ]),
-            new Categories([
+            new AdmCategories([
                 'type' => User::TYPE_ADMIN,
                 'name' => 'admin.access.user.change-password',
                 'description' => 'Change User Passwords',

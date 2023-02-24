@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Domains\Announcement\Services\AnnouncementService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use App\Domains\Auth\Models\Permission as Categories; 
+use App\Domains\Auth\Models\Permission as AdmCategories; 
 use App\Domains\Auth\Models\PersonalAccessToken; 
 use Laravel\Sanctum\Sanctum;
 
@@ -47,7 +47,7 @@ class ComposerServiceProvider extends ServiceProvider
     }
 
     private function allMenus(){
-        $categories = new Categories();
+        $categories = new AdmCategories();
         if(!\Illuminate\Support\Facades\Schema::hasTable($categories->getTable())){
             return [];
         }
