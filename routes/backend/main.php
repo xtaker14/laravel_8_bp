@@ -98,6 +98,30 @@ use Tabuna\Breadcrumbs\Trail;
 //         ->name('edit_proses');
 // });
 
+// db
+Route::group([
+    'prefix' => 'db',
+    'as' => 'db.',
+    'middleware' => [
+        // 'auth',
+        'password.expires',
+        'role:' . config('boilerplate.access.role.admin'),
+    ],
+], function () {
+    Route::get('/', ['App\Http\Controllers\Backend\DbController', 'index'])
+        ->name('index')
+        ->breadcrumbs(function (Trail $trail) {
+            $trail
+                ->parent('admin.dashboard')
+                ->push(__('DB'), route('admin.db.index'));
+        });
+        
+    Route::post('backup_db', 'App\Http\Controllers\Backend\DbController@backup_db')
+        ->name('backup_db');
+    Route::post('update_impot_sql', 'App\Http\Controllers\Backend\DbController@update_impot_sql')
+        ->name('update_impot_sql');
+});
+
 // berita
 Route::group([
     'prefix' => 'berita',

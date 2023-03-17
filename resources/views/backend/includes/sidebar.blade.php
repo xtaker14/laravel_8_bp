@@ -459,6 +459,14 @@
                 <i class="fa fa-certificate"></i> @lang('System')
             </li> 
             
+            <li class="c-sidebar-nav-item">
+                <x-utils.link
+                    href="{{ route('admin.db.index') }}"
+                    icon="c-sidebar-nav-icon fas fa-database nav-icon"
+                    class="c-sidebar-nav-link"
+                    :text="__('Database')" />
+            </li> 
+            
             <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">
                 <x-utils.link
                     href="#"
@@ -538,10 +546,6 @@
                     @endif
                 </ul>
             </li>
-        @endif
-
-        @if ($logged_in_user->hasAllAccess())
-
         @endif
 
         @if ($logged_in_user->hasAllAccess())
