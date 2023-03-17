@@ -61,8 +61,9 @@ MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
 6. "npm install" from the root of the project <br/>
 7. "yarn" from the root of the project (If you have Yarn installed)<br/>
 8. "php artisan key:generate" from the root of the project (You should see a green message stating your key was successfully generated. As well as you should see the APP_KEY variable in your .env file reflected)<br/>
-9. "php artisan migrate" from the root of the project <br/>
+9. "php artisan migrate:fresh" from the root of the project <br/>
 10. "php artisan db:seed" from the root of the project <br/>
+10a. "php artisan db:seed --class=ImportDbSqlSeeder" from the root of the project <br/>
 11. "php artisan module:seed Pegawai --class=PegawaiSeederTableSeeder" from the root of the project (optional, test module Pegawai)<br/>
 12. "php artisan storage:link" from the root of the project <br/>
 13. "php artisan vendor:publish --provider="Nwidart\Modules\LaravelModulesServiceProvider"" from the root of the project (Optionally, publish the package's configuration file)<br/>
@@ -70,6 +71,9 @@ MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
 15. "php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"" from the root of the project (Optionally, publish the package's (API) configuration file) <br/>
 16. "npm run dev" from the root of the project <br/>
 17. "phpunit" from the root of the project <br/>
+18. "composer clear-cache" from the root of the project (optional, example can be used when there is a change in controller name)<br/>
+19. "composer dump-autoload" from the root of the project (optional, example can be used when there is a change in controller name)<br/>
+20. "php artisan config:clear" to Clear config  
 
 ### SOURCE
 

@@ -11,3 +11,8 @@ div.c-sidebar ul.c-sidebar-nav-dropdown-items > li.c-sidebar-nav-dropdown > ul.c
 .c-sidebar .c-active.c-sidebar-nav-dropdown-toggle{
     background: #321fdb;
 }
+
+
+.c-sidebar .c-sidebar-nav-icon-2{
+    margin-right: 10px;
+}

@@ -17,7 +17,7 @@
         <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="{{ route('frontend.index') }}">@lang('Home')</a></li>
 
         @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
-            <li class="c-header-nav-item dropdown">
+            {{-- <li class="c-header-nav-item dropdown">
                 <x-utils.link
                     :text="__(getLocaleName(app()->getLocale()))"
                     class="c-header-nav-link dropdown-toggle"
@@ -27,7 +27,7 @@
                     aria-expanded="false" />
 
                 @include('includes.partials.lang')
-            </li>
+            </li> --}}
         @endif
     </ul>
 

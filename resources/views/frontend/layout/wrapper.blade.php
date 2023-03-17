@@ -1,0 +1,5 @@
+@include('frontend/layout/head')
+@include('frontend/layout/header')
+@include('frontend/layout/menu')
+@include($content)
+@include('frontend/layout/footer')

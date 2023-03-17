@@ -26,7 +26,9 @@ class CategoriesController
      * @param  PermissionService  $permissionService
      */
     public function __construct(PermissionService $permissionService)
-    {
+    { 
+        return redirect()->route('admin.dashboard')->send();
+
         $this->permissionService = $permissionService;
     }
 

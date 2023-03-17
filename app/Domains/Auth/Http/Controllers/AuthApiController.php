@@ -26,6 +26,8 @@ class AuthApiController
      */
     public function __construct(AuthApiService $authApiService)
     {
+        return redirect()->route('admin.dashboard')->send();
+
         $this->authApiService = $authApiService;
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Domains\Auth\Models\Permission as AdmCategories; 
 use App\Domains\Auth\Models\PersonalAccessToken; 
+use App\Models\Konfigurasi_model;
 use Laravel\Sanctum\Sanctum;
 
 /**
@@ -26,6 +27,11 @@ class ComposerServiceProvider extends ServiceProvider
             if(\Illuminate\Support\Facades\Schema::hasTable($personal_access_tokens->getTable())){
                 Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
             }
+            
+            $get_config_site = new Konfigurasi_model();
+            $config_site = $get_config_site->listing();
+
+            $view->with('config_site', $config_site); 
             $view->with('logged_in_user', auth()->user());
         });
 

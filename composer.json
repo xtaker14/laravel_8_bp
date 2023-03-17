@@ -12,8 +12,10 @@
         "php": "^7.4|^8.0",
         "arcanedev/log-viewer": "8.x",
         "darkghosthunter/laraguard": "^3.0",
+        "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.5",
         "jamesmills/laravel-timezone": "^1.9",
         "lab404/laravel-impersonate": "^1.6",
         "langleyfoxall/laravel-nist-password-rules": "^4.1",
@@ -50,7 +52,11 @@
             "Modules\\": "Modules/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/Website.php",
+            "app/Helpers/Tanggal.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
